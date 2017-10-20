@@ -1,0 +1,21 @@
+TODO
+
+
+    Add the sizeof the block struct to the requested size; you need to fit the block metadata into the same space.
+   
+    On the first custom_malloc request, extend the heap with sbrk() and create a block of maximum size. Then follow 
+    the normal sequence of allocating a block.
+    
+    Use a best-fit search when allocating blocks: Search for the smallest block greater or equal to the required size, and split the block as usual if greater.
+    
+    Remember to round up the size to the next power of 2.
+    
+    The maximum block size, MAX_SIZE, is defined in allocator.h to be 1 MiB. You may assume that the program will never request more than 1MiB of space in total.
+    
+    When initialising a block, initialise the 'merge_buddy' array elements to NULL.
+    
+    When splitting a block, set the 'buddy' pointers of both blocks and add the buddy of the block being split to the 'merge_buddy' arrays of the split blocks. This is for the merging process.
+    
+    Return NULL if the requested size is zero or cannot be allocated.
+    
+    Beware of pointer arithmetic behaviour!
